@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Acronyms Creator</title>
+    <style>
+        /* Body Styling */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f4f9;
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+
+        /* Heading Styling */
+        h1 {
+            font-size: 2.8rem;
+            margin-bottom: 30px;
+            color: #4a90e2;
+        }
+
+        /* Form Styling */
+        form {
+            background-color: #ffffff;
+            padding: 20px 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 400px;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+            color: #333;
+            outline: none;
+            transition: border-color 0.3s ease;
+        }
+
+        input[type="text"]:focus {
+            border-color: #4a90e2;
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            background-color: #4a90e2;
+            color: #ffffff;
+            font-size: 1rem;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #357ABD;
+        }
+
+        /* Result Section */
+        .result {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: #e8f4ff;
+            border-left: 5px solid #4a90e2;
+            border-radius: 5px;
+            font-size: 1.2rem;
+            color: #333;
+            width: 100%;
+            max-width: 400px;
+            text-align: left;
+        }
+
+        .result strong {
+            color: #4a90e2;
+        }
+
+        .error {
+            color: #d9534f;
+            font-weight: bold;
+            font-size: 1rem;
+            margin-top: 10px;
+        }
+
+        /* Footer Styling */
+        footer {
+            margin-top: 20px;
+            font-size: 0.9rem;
+            color: #aaa;
+        }
+    </style>
+</head>
+<body>
+    <h1>Acronyms Creator</h1>
+    <form action="/generate" method="post">
+        <input type="text" name="phrase" placeholder="Enter a phrase" required>
+        <button type="submit">Generate Acronym</button>
+    </form>
+    {% if acronym %}
+        <div class="result">
+            <p><strong>Phrase:</strong> {{ phrase }}</p>
+            <p><strong>Acronym:</strong> {{ acronym }}</p>
+        </div>
+    {% elif error %}
+        <div class="error">{{ error }}</div>
+    {% endif %}
+    <footer>
+        &copy; 2024 Acronyms Creator - Designed by Jaspreet
+    </footer>
+</body>
+</html>
